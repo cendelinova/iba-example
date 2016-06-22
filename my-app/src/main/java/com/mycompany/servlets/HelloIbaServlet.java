@@ -6,7 +6,9 @@
 package com.mycompany.servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,11 +17,23 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Petra
  */
-public class ServletDemo extends HttpServlet {
+@WebServlet(HelloIbaServlet.URL_MAPPING + "/*")
+public class HelloIbaServlet extends HttpServlet {
 
+    public static final String URL_MAPPING = "/servlet";
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       req.getRequestDispatcher("/WEB-INF/index.jsp").forward(req, resp); 
-    }    
-    
+
+        int x = 1;
+        if (req.getParameter("x") != null) {
+            try {
+                x = Integer.parseInt(req.getParameter("x"));
+            } catch (NumberFormatException ex) {
+                x = 1;
+            }
+        }
+        req.setAttribute("x", x);
+        req.getRequestDispatcher("/index.jsp").forward(req, resp);
+    }
+
 }
