@@ -6,6 +6,8 @@
 package com.mycompany.model;
 
 import java.util.Date;
+import java.util.Objects;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -14,6 +16,7 @@ import java.util.Date;
 public class Student {
     private String name;
     private String surname;
+    @DateTimeFormat(pattern = "dd.MM.yyyy")
     private Date birthday;
     private Gender gender;
 
@@ -22,6 +25,9 @@ public class Student {
         this.surname = surname;
         this.birthday = birthday;
         this.gender = gender;
+    }
+
+    public Student() {
     }
 
     public String getName() {
@@ -55,6 +61,44 @@ public class Student {
     public void setGender(Gender gender) {
         this.gender = gender;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + Objects.hashCode(this.name);
+        hash = 29 * hash + Objects.hashCode(this.surname);
+        hash = 29 * hash + Objects.hashCode(this.birthday);
+        hash = 29 * hash + Objects.hashCode(this.gender);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Student other = (Student) obj;
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.surname, other.surname)) {
+            return false;
+        }
+        if (!Objects.equals(this.birthday, other.birthday)) {
+            return false;
+        }
+        if (this.gender != other.gender) {
+            return false;
+        }
+        return true;
+    }
+    
     
             
 }
