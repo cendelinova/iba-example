@@ -18,7 +18,8 @@ import org.springframework.format.annotation.DateTimeFormat;
  * @author Petra
  */
 public class Student {
-
+    private Long id;
+    
     @Pattern(regexp = "[a-zA-Z]+", message = "The field must contain only characters.")
     @Length(min = 1, max = 60, message = "This field must be between 1 and 60 characters.")
     @NotEmpty(message = "This field is required.")
@@ -36,14 +37,15 @@ public class Student {
     private Date birthday;
     private Gender gender;
 
-    public Student(String name, String surname, Date birthday, Gender gender) {
-        this.name = name;
-        this.surname = surname;
-        this.birthday = birthday;
-        this.gender = gender;
+    public Student() {
     }
 
-    public Student() {
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {
