@@ -5,10 +5,7 @@
  */
 package com.mycompany.web;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,16 +24,17 @@ public class HelloIbaServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        int x = 1;
+        int count = 1;
         if (req.getParameter("x") != null) {
             try {
-                x = Integer.parseInt(req.getParameter("x"));
+                count = Integer.parseInt(req.getParameter("x"));
+                if (count<0) count = 1;
             } catch (NumberFormatException ex) {
-                x = 1;
+                count = 1;
             }
         }
-        req.setAttribute("x", x);
-        req.getRequestDispatcher("/WEB-INF/index.jsp").forward(req, resp);
+        req.setAttribute("x", count);
+        req.getRequestDispatcher("/WEB-INF/views/jsp/hello.jsp").forward(req, resp);
     }
 
 }
