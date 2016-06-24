@@ -7,6 +7,7 @@ package com.mycompany.model;
 
 import java.util.Date;
 import java.util.Objects;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.Length;
@@ -31,10 +32,11 @@ public class Student {
     @NotEmpty(message = "This field is required.")
     private String surname;
     
-    @Past(message = "There’s a birthday field which cannot be a future date.")
-    @NotEmpty(message = "This field is required.")
+    @Past(message = "Your birthday cannot be a future date.")
+    @NotNull(message = "This field is required.")
     @DateTimeFormat(pattern = "dd.MM.yyyy")
     private Date birthday;
+    
     private Gender gender;
 
     public Student() {

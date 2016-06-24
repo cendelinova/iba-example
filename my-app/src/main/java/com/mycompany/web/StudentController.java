@@ -8,6 +8,7 @@ package com.mycompany.web;
 import com.mycompany.model.Student;
 import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -27,15 +28,15 @@ public class StudentController {
         return "add";
     }
 
-    @RequestMapping(value = "/student/result", method = RequestMethod.POST)
-    public String addStudent(@ModelAttribute("studentForm") @Valid Student student,
-            ModelMap model, BindingResult result) {
+    @RequestMapping(value = "/student/result",method = RequestMethod.POST)
+    public String addStudent(@Valid @ModelAttribute("studentForm") Student student, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "add";
+        } else {
+            model.addAttribute("message", "Student added successfully");
+            model.addAttribute("student", student);
+            return "result";
         }
-        model.addAttribute("message", "Student added successfully");
-        model.addAttribute("student", student);
-        return "result";
 
     }
 }
