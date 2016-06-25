@@ -15,9 +15,11 @@ import java.util.List;
 public interface StudentService {
     public void addStudent(Student student);
     
-    public void deleteStudent(Student student);
+    public void deleteStudent(long id);
     
     public void updateStudent(Student student);
+    
+    public Student findStudentById(Long id);
     
     public List<Student> getAllStudents();
     

@@ -16,7 +16,8 @@ import java.util.List;
  */
 public class StudentServiceListImpl implements StudentService {
 
-    private List<Student> students;
+    private final List<Student> students;
+    private static long id = 0;
 
     public StudentServiceListImpl() {
         this.students = new ArrayList();
@@ -25,34 +26,38 @@ public class StudentServiceListImpl implements StudentService {
     @Override
     public void addStudent(Student student) {
         validateNull(student);
-        //if (student.getId() != ) throw new IllegalArgumentException("Student does exist"); 
-        
+        //if (findStudentById(student.getId()) != null) throw new IllegalArgumentException("Student already exists"); 
+
+        student.setId(++id);
         students.add(student);
     }
 
     @Override
-    public void deleteStudent(Student student) {
-        validateNull(student);
-        existsStudent(student.getId());
-        students.remove(student);
+    public void deleteStudent(long id) {
+        //validateNull(student);
+        //existsStudent(student.getId());
+        students.removeIf(s -> s.getId() == id);
+        //students.remove(student);
+    }
+
+    @Override
+    public List<Student> getAllStudents() {
+        return Collections.synchronizedList(students);
     }
 
     @Override
     public void updateStudent(Student student) {
+        //TODO odstranit stare zaznamy, update listu
         validateNull(student);
         existsStudent(student.getId());
         Student s = findStudentById(student.getId());
         int i = students.indexOf(s);
         students.set(i, student);
-
     }
 
     @Override
-    public List<Student> getAllStudents() {
-        return Collections.unmodifiableList(students);
-    }
-
-    public Student findStudentById(Long id) {
+    public Student findStudentById(Long id
+    ) {
         for (Student s : getAllStudents()) {
             if (s.getId() == id) {
                 return s;
@@ -60,13 +65,13 @@ public class StudentServiceListImpl implements StudentService {
         }
         return null;
     }
-    
+
     private void validateNull(Student student) {
         if (student == null) {
             throw new IllegalArgumentException("Student is null");
         }
     }
-    
+
     private void existsStudent(Long id) {
         if (findStudentById(id) == null) {
             throw new IllegalArgumentException("Student does not exist");

@@ -11,10 +11,14 @@
     </head>
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">IBA</a>
-                </div>
-            </div>
+            <a class="navbar-brand" href="#">IBA project</a>
+            <ul class="nav navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/my-app/student">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/my-app/student/add">Add student</a>
+                </li>
+            </ul>
         </nav> 
 
