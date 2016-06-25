@@ -28,7 +28,7 @@
                 Birthday 
             </form:label>
             <div class="col-lg-6">												 
-                <form:input class="form-control" path="birthday" size="16" placeholder="dd.mm.yyyy"/>
+                <form:input id="datepicker" path="birthday" type="text" class="form-control" placeholder="dd.mm.yyyy"/>
                 <form:errors path="birthday" class="control-label" />
             </div>
         </div>
@@ -41,7 +41,6 @@
             <form:radiobutton path="gender" value="MALE"/> Male
             <form:radiobutton path="gender" value="FEMALE"/> Female 
         </div>
-
     </div>
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
