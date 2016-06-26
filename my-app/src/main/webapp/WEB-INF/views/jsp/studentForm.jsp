@@ -1,5 +1,5 @@
 <%@include file="../fragments/header.jsp" %>
-<form:form id="form" method="post" modelAttribute="studentForm" class="form-horizontal" role="form" action="/my-app/student/add" style="margin-top:80px;">
+<form:form id="studentForm" method="post" modelAttribute="studentForm" class="form-horizontal" role="form" action="/my-app/student/add" style="margin-top:80px;">
     <spring:bind path="name">
         <div class="form-group ${status.error ? 'has-error' : ''}">
             <form:label class="col-lg-2 control-label" path="name"> 
@@ -45,7 +45,7 @@
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
             <input type="submit" class="btn btn-primary" value="Submit">
-            <input Type="button" class="btn btn-danger" value="Back" onClick="history.go(-1);return true;">
+            <input type="button" class="btn btn-danger" value="Back" onclick="window.location = '/my-app/student';" >
         </div>
     </div>			
 </form:form>

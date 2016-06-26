@@ -6,18 +6,17 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=uft-8">
-        <meta http-equiv="Content-Type" content="text/html; charset=uft-8">
         <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet"/>
-        <script href="<c:url value="/resources/js/bootstrap.min.js" />" type="text/javascript"></script>
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $("#datepicker").datepicker({
-                    dateFormat: 'dd.mm.yy'});
-            });
-        </script>        
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>   
+        <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
+        <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
+        <spring:url value="/resources/js/validation.js" var="validation"/>
+        <spring:url value="/resources/js/bootstrap.min.js" var="bootstrap.js"/>
+        <script src="${bootstrap.js}"></script>
+        <script src="${validation}"></script>
+        
     </head>
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top">
