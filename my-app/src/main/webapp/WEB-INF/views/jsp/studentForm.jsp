@@ -1,4 +1,5 @@
 <%@include file="../fragments/header.jsp" %>
+
 <form:form id="studentForm" method="post" modelAttribute="studentForm" class="form-horizontal" role="form" action="/my-app/student/add" style="margin-top:80px;">
     <spring:bind path="name">
         <div class="form-group ${status.error ? 'has-error' : ''}">
