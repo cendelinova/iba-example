@@ -45,7 +45,6 @@ public class StudentServiceListImpl implements StudentService {
 
     @Override
     public void updateStudent(Student student) {
-        //TODO odstranit stare zaznamy, update listu
         validateNull(student);
         existsStudent(student.getId());
         Student s = findStudentById(student.getId());
