@@ -35,8 +35,7 @@ $(document).ready(function () {
             }
         },
         submitHandler: function (form) {
-            // form.submit(); // <-- this is default
-            alert('valid form');
+            form.submit();
         }
     });
 

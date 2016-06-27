@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  *
@@ -55,7 +54,7 @@ public class StudentController {
                 model.addAttribute("student", student);
                 return "result";
              */
-            return "redirect:/student/";
+            return "redirect:/student";
 
         }
     }
@@ -64,8 +63,8 @@ public class StudentController {
     public String showUpdateForm(@PathVariable("id") long id, Model model) {
 
         Student student = service.findStudentById(id);
-        model.addAttribute("studentForm", student);
-        return "studentForm";
+        model.addAttribute("studentFormUpdate", student);
+        return "studentFormUpdate";
 
     }
 
@@ -74,15 +73,9 @@ public class StudentController {
             BindingResult result, Model model) {
 
         if (result.hasErrors()) {
-            return "studentForm";
+            return "studentFormUpdate";
         } else {
             service.updateStudent(student);
-            /*redirectAttributes.addFlashAttribute("css", "success");
-			if(user.isNew()){
-				redirectAttributes.addFlashAttribute("msg", "User added successfully!");
-			}else{
-				redirectAttributes.addFlashAttribute("msg", "User updated successfully!");
-			}*/
             return "redirect:/student";
 
         }
@@ -92,10 +85,6 @@ public class StudentController {
     public String showStudent(@PathVariable("id") long id, Model model) {
 
         Student student = service.findStudentById(id);
-        /*if (user == null) {
-			model.addAttribute("css", "danger");
-			model.addAttribute("msg", "User not found");
-		}*/
         model.addAttribute("student", student);
 
         return "detail";

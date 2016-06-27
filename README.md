@@ -26,3 +26,25 @@ Rozřazovací příklad
 ## Level 6 - Validace
 * zde jsem měla menší problém s kompatibilitou Spring a Hibernate
 * TODO - výpis chybové zprávy pro špatný formát data
+
+## Level 7 - Servisní vrstva
+* s tímto úkolem jsem přílíš problém neměla
+* http://localhost:8080/my-app/student/add - přidání nového studenta
+* http://localhost:8080/my-app/student/1/update - editace studenta s ID 1
+* http://localhost:8080/my-app/student/1/detail - detail studenta s ID 1
+
+## Level 8 - Databáze
+* s frameworkem Hibernate jsem nikdy nepracovala ani s embedded databázemi
+* pro mě nejobtížnější úkol, zabral mi mnoho času 
+* zkoušela jsem několik tutoriálů, ale neúspěšně
+
+## Level 9 - Vylepšený frontend
+* s podobnou validaci jsem měla už zkušenosti, ale nikoliv ve spojení JSP a Spring
+* největší problém opět dependecies a propojení validation.js do JSP
+
+## Level 10 - REST
+* nikdy jsem REST webové služby nepoužívala, neměla jsem již dostatek času k rozpracování
+
+## Level 11 - JUnit testy
+* nikdy jsem je ještě nepoužila, nejsem si úplně jistá mým použitím
+

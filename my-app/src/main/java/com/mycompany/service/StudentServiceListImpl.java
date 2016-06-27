@@ -35,9 +35,7 @@ public class StudentServiceListImpl implements StudentService {
     @Override
     public void deleteStudent(long id) {
         //validateNull(student);
-        //existsStudent(student.getId());
         students.removeIf(s -> s.getId() == id);
-        //students.remove(student);
     }
 
     @Override
@@ -47,12 +45,13 @@ public class StudentServiceListImpl implements StudentService {
 
     @Override
     public void updateStudent(Student student) {
-        //TODO odstranit stare zaznamy, update listu
         validateNull(student);
         existsStudent(student.getId());
         Student s = findStudentById(student.getId());
+        
         int i = students.indexOf(s);
         students.set(i, student);
+  
     }
 
     @Override
